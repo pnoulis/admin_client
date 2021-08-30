@@ -2,7 +2,7 @@
 
 .#*
 /public
-./package-lock.json
+package-lock.json
 # dependencies
 /node_modules
 /.pnp
