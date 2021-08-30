@@ -1,0 +1,85 @@
+html, body {
+    /*
+          FONTS-SIZES
+     */
+    --font-size-3small: 0.4em;
+    --font-size-2small: 0.6em;
+    --font-size-small: 0.8em;
+    --font-size-regular: 1em;
+    --font-size-large: 1.2em;
+    --font-size-2large: 1.4em;
+    --font-size-3large: 1.6em;
+    --font-size-4large: 1.8em;
+    --font-root-small: 0.9rem;
+    --font-root-regular: 1rem;
+    --font-root-large: 1.1rem;
+
+    /*
+          COLOR-PALETTE
+     */
+    --color-neutral-darker: rgba(253, 245, 230, 1);
+    --color-neutral-darker-8: rgba(253, 245, 230, 0.8);
+    --color-neutral: rgba(250, 250, 246, 1);
+    --color-neutral-8: rgba(250, 250, 246, .8);
+    --color-primary: rgba(61, 108, 185, 1);
+    --color-primary-8: rgba(61, 108, 185, .8);
+    --color-secondary: rgba(0, 209, 255, 1);
+    --color-secondary-8: rgba(0, 209, 255, 0.2);
+    --color-semantic: rgba(0, 255, 240, 1);
+    --color-semantic-8: rgba(0, 255, 240, .8);
+    --color-grey-phosSilver: rgba(160, 169, 200, 1);
+    --color-grey-phosSilver-8: rgba(160, 169, 200, .8);
+    --color-grey-phosSilver-6: rgba(160, 169, 200, .6);
+    --color-grey-phosSilver-4: rgba(160, 169, 200, 0.4);
+    --color-grey-phosSilver-2: rgba(160, 169, 200, 0.2);
+    --color-error: rgba(255, 115, 115, 1);
+    --color-success: rgba(0, 250, 154, 1);
+
+    /*
+           COLOR-VAVBAR
+     */
+
+
+    flex: 1;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    background-color: rgba(160, 169, 200, 0.05);
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+                 Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.visually-hide-element {
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    border: 0;
+}
+@media screen and (min-width: 1400px) {
+    --font-root-small: 1rem;
+    --font-root-regular: 1.1rem;
+    --font-root-large: 1.2rem;
+}
+
+@media screen and (min-width: 2000px) {
+    --font-root-small: 1.1rem;
+    --font-root-regular: 1.2rem;
+    --font-root-large: 1.3rem;
+}
