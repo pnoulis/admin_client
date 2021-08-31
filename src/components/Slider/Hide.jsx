@@ -16,7 +16,7 @@ z-index: 1000;
 position: relative;
 & * {
 color: ${props => props.toggled ? "transparent" : "initial"};
-transition: transform 2s, color 1.5s ease-in;
+transition: transform 1s, color 1s ease-in;
 }
 ::before{
 content: "";
