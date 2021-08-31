@@ -1,22 +1,22 @@
 import {useRef, useState, useEffect} from "react";
 import styled from "styled-components";
 
+// width: ${props => {
+//   if (props.toggled) return "0px";
+//   return props.dimensions.width + "px";
+// }};
+
 const S = {};
 S.Toggle = styled.div`
 display: flex;
+width: ${props => props.toggled ? "0px" : "350px"};
+transition: transform 2s, width 2s;
+
 z-index: 1000;
-flex: ${props => props.toggled ? 0 : 1};
-width: ${props => {
-if (props.toggled) return "0px";
-return props.dimensions.width + "px";
-}};
-transition: transform 2s, width 2s, flex 2s;
 position: relative;
-
-
 & * {
 color: ${props => props.toggled ? "transparent" : "initial"};
-transition: transform 1s, color 1s;
+transition: transform 2s, color 1.5s ease-in;
 }
 ::before{
 content: "";
@@ -43,11 +43,6 @@ export function Hide({children}) {
   [toggle, setToggle] = useState(false),
   [dimensions, setDimensions] = useState({}),
   ref = useRef(null);
-
-  useEffect(() => {
-    const child = ref.current.firstElementChild;
-    setDimensions({width: child.offsetWidth});
-  }, []);
 
   function handleToggle(e) {
     if (e.target !== ref.current) return;

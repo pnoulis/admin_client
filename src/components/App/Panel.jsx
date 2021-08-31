@@ -4,6 +4,7 @@ import Footer from "./Footer";
 import Sidebar from "./Sidebar";
 import {PANEL_STORE} from "lib/stores";
 import {Scale} from "components/Various";
+import styled from "styled-components";
 
 const
 Panel = () => {
@@ -12,14 +13,16 @@ Panel = () => {
   return (
     <PANEL_STORE.panelContext.Provider value={{...panel, setPanel}}>
         <Layout.Root>
-          <Layout.Header><Header/></Layout.Header>
-          <Layout.Sidebar><Sidebar/></Layout.Sidebar>
+          <Header></Header>
           <Layout.Main>
+            <Layout.Sidebar>
+              <Sidebar/>
+            </Layout.Sidebar>
             <Scale panel={panel}>
               {panel.component || null}
             </Scale>
           </Layout.Main>
-          <Layout.Footer><Footer/></Layout.Footer>
+          <Footer/>
         </Layout.Root>
     </PANEL_STORE.panelContext.Provider>
   );

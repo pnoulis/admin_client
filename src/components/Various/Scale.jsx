@@ -1,29 +1,28 @@
-import {useState, useEffect} from "react";
+import {useState, useEffect, useRef} from "react";
 import styled from "styled-components";
 let sam = 0;
 const
 Wrapper = styled.div`
-flex: 1;
+display: flex;
+flex: ${props => props.done ? 1 : 0};
 transform-origin: left top;
-width: min-content;
 font-size: var(--font-root-regular);
-transform: scale(${(props) => props.scale})
+transform: scaleX(${(props) => props.scale})
 `,
 Scale = ({panel, children}) => {
-  const [scale, setScale] = useState(1);
+  const
+  [scale, setScale] = useState(1),
+  [done, setDone] = useState(false);
 
   useEffect(() => {
-    if (sam > 3) return;
     const clientScroll = document.documentElement.scrollWidth,
           clientWidth = document.documentElement.clientWidth;
-    if (clientScroll === clientWidth) return null;
 
-    console.log("content will scale");
-    console.log(clientScroll);
-    console.log(clientWidth);
-
-    setScale(scale - 0.1);
-    ++sam;
+    if (clientScroll === clientWidth) {
+      setDone(true);
+      return null;
+    }
+    setScale(scale - 0.1, 1);
   }, [scale]);
 
   useEffect(() => {
@@ -31,11 +30,10 @@ Scale = ({panel, children}) => {
           clientWidth = document.documentElement.clientWidth;
     if (clientScroll === clientWidth) return null;
     setScale(scale - 0.1);
-    ++sam;
   }, [panel.data]);
 
   return (
-    <Wrapper scale={scale}>
+    <Wrapper key={scale} scale={scale} done={done}>
       {children}
     </Wrapper>
   );
