@@ -1,0 +1,65 @@
+.imageUploaded {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    font-size: 1rem;
+    font-weight: bold;
+
+    p {
+        padding: 0;
+        margin: 0;
+        cursor: pointer;
+    }
+    p:last-child {
+        margin-top: 10px;
+        color: red;
+    }
+
+    @media (min-width: 1000px) {
+        font-size: 1.2rem;
+    }
+
+}
+.uploadImage {
+    font-weight: bold;
+    color: var(--color-blue-dodge-1);
+    text-align: center;
+
+    .inputWrapper {
+        padding: 20px 5px;
+        outline: none;
+        display: inline-block;
+        cursor: pointer;
+    }
+    input {display: none;}
+
+    @media (min-width: 1000px) {
+        font-size: 1.2rem;
+    }
+}
+
+.viewImage {
+    padding: 0px;
+    margin: 0px;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--color-blue-dodge-1);
+
+    p {
+        padding: 0px;
+        margin: 0px;
+        text-align: center;
+        margin-bottom: 5px;
+        cursor: pointer;
+    }
+    @media (min-width: 1000px) {
+        font-size: 1.2rem;
+    }
+
+}

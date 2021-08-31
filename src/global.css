@@ -35,14 +35,18 @@ html, body {
     --color-error: rgba(255, 115, 115, 1);
     --color-success: rgba(0, 250, 154, 1);
 
+    /* old colors */
+    --color-blue-darkNavy-b90-1: rgba(61, 61, 90, 1);
+    --color-blue-dodge-1: rgba(30, 144, 255, 1);
+
     /*
            COLOR-VAVBAR
      */
 
 
     display: flex;
-    min-width: 100vw;
-    min-height: 100vh;
+    width: 100%;
+    height: 100%;
     padding: 0;
     margin: 0;
     background-color: rgba(160, 169, 200, 0.05);

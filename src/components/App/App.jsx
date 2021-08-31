@@ -1,15 +1,17 @@
-import Layout from "./Layout";
+import {useResizeEvent} from "lib/hooks";
+import Panel from "./Panel";
+import {APP_STORE} from "lib/stores";
 
 export
 const
 App = () => {
+  const
+  {app, setApp} = APP_STORE.useApp(),
+  resize = useResizeEvent();
+
   return (
-    <Layout>
-      <header>"replace with header"</header>
-      <aside>"replace with aside"</aside>
-      <main id="main-content">main content</main>
-      <footer>"replace with footer"</footer>
-    </Layout>
+    <APP_STORE.appContext.Provider value={{...app, setApp}}>
+      <Panel/>
+    </APP_STORE.appContext.Provider>
   );
 };
-
