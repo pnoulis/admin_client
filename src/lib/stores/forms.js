@@ -6,14 +6,13 @@ ACTIONS = {
   setErrors: (fieldErrors) => {return {type: "SET_ERRORS", fieldErrors};},
   setInput: (name, value) => {return {type: "SET_INPUT", name, value};},
   toggle: (operation) => {return {type: "TOGGLE", operation};},
-  edit: () => {return {type: "EDIT"};},
+  edit: (toggle) => {return {type: "EDIT", toggle};},
   refreshForm: (initialState) => {return {type: "REFRESH_FORM", initialState};},
-  updateForm: () => {return {type: "UPDATE_FORM"};},
 },
 REDUCER = (state, action) => {
   switch (action.type) {
   case "SET_ERRORS":
-    return {...state, fieldErrors: action.fieldErrors, edit: true};
+    return {...state, toggled: false, fieldErrors: action.fieldErrors, edit: true};
   case "SET_INPUT":
     return {
       ...state,
@@ -23,10 +22,9 @@ REDUCER = (state, action) => {
   case "TOGGLE":
     return {...state, toggled: action.operation};
   case "EDIT":
-    return {...state, toggled: "edit", edit: !state.edit};
+    return {...state, toggled: action.toggle, edit: action.toggle};
   case "REFRESH_FORM":
     return action.initialState;
-  case "UPDATE_FORM":
   default:
     return state;
   }
@@ -34,13 +32,7 @@ REDUCER = (state, action) => {
 useForm = (initialState) => {
   const
   [state, dispatch] = useReducer(REDUCER, initialState),
-  proxy = (action, ...payload) => {
-    if (action !== "toggle") return dispatch(ACTIONS[action](...payload));
-    if (payload[0] === "edit") return dispatch(ACTIONS.edit());
-    if (payload[0] === "cancel") return dispatch(ACTIONS.refreshForm(initialState));
-    dispatch(ACTIONS[action](...payload));
-  };
-
+  proxy = (action, ...payload) => dispatch(ACTIONS[action](...payload, initialState));
   return {form: state, setForm: proxy};
 },
 formContext = React.createContext({

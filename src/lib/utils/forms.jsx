@@ -53,7 +53,13 @@ formStyleReducer = (params) => {
   if (params.error) config.error = true;
   return config;
 },
-ifErrors = fieldErrors => Object.values(fieldErrors).map(err => !!err && err);
+ifErrors = fieldErrors => {
+  const f = [];
+  for (const err of Object.values(fieldErrors)) {
+    err && f.push(err);
+  }
+  return f.length ? f : null;
+};
 
 export const FORM_UTILS = {
   ifErrors,

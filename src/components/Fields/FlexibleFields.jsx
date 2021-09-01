@@ -18,8 +18,7 @@ export function FlexibleField_0({name, disabled}) {
   useEffect(() => {
     if (disabled) return;
     const selection = window.getSelection();
-    if (!fields[name]) selection.collapse(thisRef.current, 0);
-    else selection.collapse(thisRef.current, 1);
+    if (fields[name]) selection.collapse(thisRef.current, 1);
   }, [fields[name]]);
 
   return (

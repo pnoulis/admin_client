@@ -240,7 +240,7 @@ INPUTS = {
           emptyInput = "Wpu field is empty!",
           wrongFormat = "Wpu field is allowed only (0-9.)";
 
-    if (!string) return emptyInput;
+    if (!string || string === "0") return emptyInput;
     else if (/[^0-9.]/.test(string)) return wrongFormat;
     else return false;
   },
@@ -298,6 +298,7 @@ INPUTS = {
   },
 
   img: function(img) {
+    if (!(img instanceof File) && Object.keys(img).length) return false;
     if (!img.name) return "you forgot to upload an image";
 
     const LENGTH_LIMIT = 124, // completely arbitrary

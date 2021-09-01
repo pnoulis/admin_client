@@ -2,6 +2,19 @@ import fetch from "node-fetch";
 import AbortController from "abort-controller";
 
 const
+FILE_FORMATS = [
+  "image/jpeg",
+  "image/png",
+  "image/gif",
+  "image/webp",
+  "image/svg+xml",
+  "image/tiff",
+  "image/bmp",
+],
+isImage = (object) => {
+  if (!("type" in object)) return false;
+  if (FILE_FORMATS.some(format => format === object.type)) return true;
+},
 BACKEND_HOST = "http://localhost:4006/api",
 REQ_TIMEOUT = 10000; // 10 seconds
 
@@ -41,7 +54,6 @@ function constructUrl(path, params) {
 
 function makeHeaders(isFile) {
   if (isFile) return {
-    "Content-Type": "multipart/form-data",
     "Accept": "application/json",
   }; else return {
     "Content-Type": "application/json",
@@ -52,21 +64,14 @@ function makeHeaders(isFile) {
 function encodeMulti(payload) {
   let formData = new FormData();
   Object.entries(payload).forEach(([key, val]) => {
-    if (typeof val === "object") {
-      if (key !== "imgs") {
-        val = JSON.stringify(val);
-      }
-      if (key === "imgs" && !payload.imgs.name) {
-        val = JSON.stringify(val);
-      }
-    }
+    if (typeof val === "object" && key !== "img") val = JSON.stringify(val);
     formData.set(key, val);
   });
   return formData;
 }
 
 const backend = {
-  get({url, payload, params, file}) { // READ
+  get({url, payload, params}) { // READ
     const abController = new AbortController(),
           timeout = setTimeout(
             () => abController.abort(),
@@ -75,7 +80,10 @@ const backend = {
     url = constructUrl(url, params);
     return fetch(url, {
       method: "get",
-      headers: makeHeaders(file),
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+      },
       signal: abController.signal,
       credentials: "include",
     }).then(checkStatus)
@@ -83,7 +91,9 @@ const backend = {
       .catch(errors)
       .finally(() => clearTimeout(timeout));
   },
-  post({url, payload, params, file}) { // CREATE
+  post({url, payload, params}) { // CREATE
+    let file = false;
+    if (payload.img && isImage(payload.img)) file = true;
     const abController = new AbortController(),
           timeout = setTimeout(
             () => abController.abort(),
@@ -101,7 +111,7 @@ const backend = {
       .catch(errors)
       .finally(() => clearTimeout(timeout));
   },
-  delete({url, payload, params, file}) { // DELETE
+  delete({url, payload, params}) { // DELETE
     const abController = new AbortController(),
           timeout = setTimeout(
             () => abController.abort(),
@@ -111,7 +121,10 @@ const backend = {
     return fetch(url, {
       method: "delete",
       body: JSON.stringify(payload),
-      headers: makeHeaders(file),
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+      },
       signal: abController.signal,
       credentials: "include",
     }).then(checkStatus)
@@ -119,7 +132,9 @@ const backend = {
       .catch(errors)
       .finally(() => clearTimeout(timeout));
   },
-  put({url, payload, params, file}) { // UPDATE
+  put({url, payload, params}) { // UPDATE
+    let file = false;
+    if (payload.img && isImage(payload.img)) file = true;
     const abController = new AbortController(),
           timeout = setTimeout(
             () => abController.abort(),

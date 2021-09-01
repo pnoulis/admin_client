@@ -13,7 +13,7 @@ Panel = () => {
   return (
     <PANEL_STORE.panelContext.Provider value={{...panel, setPanel}}>
         <Layout.Root>
-          <Header></Header>
+          <Header/>
           <Layout.Main>
             <Layout.Sidebar>
               <Sidebar/>

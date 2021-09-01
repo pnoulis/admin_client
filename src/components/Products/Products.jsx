@@ -8,7 +8,13 @@ import {FlexibleField_0 as TextField, ImageField, SelectionField} from "componen
 
 const
 {usePanelContext} = PANEL_STORE,
-tags = backend.get({url: "/tags"}),
+tags = (async () => {
+  const res = await backend.get({url: "/tags"});
+  if (!res.ok) return alert("could not load tags");
+
+  return res.payload.map(v => v.tag);
+})(),
+products = "/product",
 pus = [
   "euro",
   "pound",
@@ -20,6 +26,7 @@ mus = [
   "lt",
 ],
 CELL_MAP = {
+  img: (<ImageField/>),
   pid: (<TextField name="pid" disabled={true}/>),
   title: (<TextField name="title"/>),
   description: (<TextField name="description"/>),
@@ -31,7 +38,6 @@ CELL_MAP = {
   stock: (<TextField name="stock"/>),
   vstock: (<TextField name="vstock" disabled={true}/>),
   inStock: (<TextField name="inStock" disabled={true}/>),
-  img: (<ImageField/>),
   tags: (<SelectionField list={tags} multiple={true} name="tags" each="tag"/>),
   mu: (<SelectionField list={mus} multiple={false} name="mu"/>),
   pu: (<SelectionField list={pus} multiple={false} name="pu"/>),
@@ -51,10 +57,10 @@ PRODUCT_SCHEMA = {
     description: "",
     supplier: "",
     sid: "",
-    wpu: 0,
-    ppu: 0,
+    wpu: "",
+    ppu: "",
     tp: 0,
-    stock: 0,
+    stock: "",
     vstock: 0,
     inStock: false,
     oldImg: "",
@@ -64,6 +70,7 @@ Wrapper = styled.article`
 flex: 1;
 display: flex;
 justify-content: center;
+padding: 150px 30px 150px 50px;
 align-items: items;
 font-size: var(--font-root-regular);
 `,
@@ -93,6 +100,7 @@ Products = () => {
               body: data,
               headers: Object.keys(CELL_MAP),
               extras: [],
+              target: products,
               cellMap: CELL_MAP,
               formSchema: PRODUCT_SCHEMA,
             }}

@@ -41,14 +41,14 @@ export function SelectionField({list, multiple, name, each}) {
   [asyncList, setAsyncList] = useState([]),
   {fields} = useFormContext();
 
-  useEffect(async () => {
+  useEffect(() => {
+    let eventRef;
     if ("then" in list) {
-      const res = await list;
-      if (!res.ok) return alert(`${name} could not be loaded, contact programmer`);
-      const payload = (!(res.payload[0] instanceof Array)) ? res.payload.map(v => v[each]) :
-            res.payload;
-      setAsyncList(payload);
+      eventRef = setTimeout(() => {
+        list.then(r => setAsyncList(r)).catch(err => alert(err));
+      });
     } else setAsyncList(list);
+    return () => clearTimeout(eventRef);
   }, []);
 
   return (

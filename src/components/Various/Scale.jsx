@@ -1,4 +1,4 @@
-import {useState, useEffect, useRef} from "react";
+import {useState, useEffect} from "react";
 import styled from "styled-components";
 let sam = 0;
 const
@@ -18,18 +18,16 @@ Scale = ({panel, children}) => {
     const clientScroll = document.documentElement.scrollWidth,
           clientWidth = document.documentElement.clientWidth;
 
-    if (clientScroll === clientWidth) {
-      setDone(true);
-      return null;
-    }
-    setScale(scale - 0.1, 1);
+    if (clientScroll === clientWidth) return setDone(true);
+
+    setScale(scale - 0.2);
   }, [scale]);
 
   useEffect(() => {
     const clientScroll = document.documentElement.scrollWidth,
           clientWidth = document.documentElement.clientWidth;
     if (clientScroll === clientWidth) return null;
-    setScale(scale - 0.1);
+    setScale(scale - 0.2);
   }, [panel.data]);
 
   return (

@@ -25,7 +25,7 @@ export function ImageField() {
   ); else if (!Object.keys(img).length) return (
     <UploadImage fields={fields} edit={edit} setForm={setForm} img={img}/>
   ); else return (
-    <ViewImage edit setForm={setForm}/>
+    <ViewImage edit={edit} setForm={setForm} img={img}/>
   );
 }
 
@@ -86,11 +86,13 @@ function ViewImage({fields, edit, setForm, img}) {
       <Resizable
         style={{margin: "auto"}}
         minHeight={80}
+        width={"100%"}
+        height={"100%"}
         minWidth={90}
         maxWidth={300}
         maxHeight={300}
         defaultSize={{width: 90, height: 80}}>
-        <img style={imgStyle} src={img}/>
+        <img style={imgStyle} src={img.large.path}/>
       </Resizable>
     </div>
   );

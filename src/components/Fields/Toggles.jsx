@@ -68,7 +68,7 @@ export function Delete({children, style = {}}) {
   return (
     <div
       className={style.delete || ""}
-      onClick={() => setForm("toggle", "deleted")}>
+      onClick={() => setForm("toggle", "delete")}>
       <p>
         {
           children ||
