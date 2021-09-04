@@ -36,11 +36,8 @@ export default function FormRow({notify, data, edit}) {
   ),
   {setReq, status, res} = useBackend();
 
-  console.log(form);
-
   useEffect(() => {
     if (status || !form.toggled) return null;
-    if (notify) notify(form.toggled);
 
     switch (form.toggled) {
     case "edit":
@@ -69,6 +66,8 @@ export default function FormRow({notify, data, edit}) {
       return null;
     }
 
+    notify && notify(form.toggled);
+
   }, [form.toggled]);
 
 
@@ -77,10 +76,11 @@ export default function FormRow({notify, data, edit}) {
     const payload = res.payload;
     if (!res.ok) setForm("edit", true);
     if (payload.fieldErrors) return setTimeout(() => setForm("setErrors", payload.fieldErrors), 1000);
-    if (!res.ok && payload.flashMessage) setTimeout(() => setApp("addFlash", {flashId: payload.flashMessage}), 1000);
+    if (payload.flashMessage) setTimeout(() => setApp("addFlash", {flashId: payload.flashMessage}), 1000);
 
     if (res.ok) {
-      setPanel("setData", payload);
+      form.new && setForm("toggle", "cancel");
+      setTimeout(() => setPanel("setData", payload), 1500);
     }
   }, [res]);
 
