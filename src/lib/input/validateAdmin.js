@@ -238,10 +238,13 @@ INPUTS = {
   wpu: function(number) {
     const string = number.toString(),
           emptyInput = "Wpu field is empty!",
-          wrongFormat = "Wpu field is allowed only (0-9.)";
+          wrongFormat = "Wpu field is allowed only (0-9)",
+          numberLessThan0 = "Wpu cannot be less than 0";
 
-    if (!string || string === "0") return emptyInput;
-    else if (/[^0-9.]/.test(string)) return wrongFormat;
+    console.log(number);
+    if (!string) return emptyInput;
+    else if (/[^0-9]|^0/.test(string)) return wrongFormat;
+    else if (number <= 0) return numberLessThan0;
     else return false;
   },
 
@@ -266,7 +269,8 @@ INPUTS = {
     else return false;
   },
   mu: function(array) {
-    const isEmpty = "Measuring unit has not been selected";
+    const
+    isEmpty = "Measuring unit has not been selected";
     if (!array.length) return isEmpty;
     return false;
   },
