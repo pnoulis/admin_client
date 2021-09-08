@@ -9,7 +9,7 @@ FIELDS = {
   img(fields, value) {
     return {
       ...fields,
-      oldImg: !fields.oldImg ? fields.img : fields.oldImg,
+      oldImg: !fields.oldImg ? fields.img.tiny && fields.img.tiny.path: fields.oldImg,
       img: value,
     };
   },

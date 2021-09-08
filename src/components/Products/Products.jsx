@@ -76,7 +76,7 @@ font-size: var(--font-root-regular);
 `,
 Products = () => {
   const
-  {data, setPanel} = usePanelContext(),
+  {data, key, setPanel} = usePanelContext(),
   {setReq, status, res} = useBackend();
 
   useEffect(() => {
@@ -96,7 +96,7 @@ Products = () => {
       {status && renderStatus(status)}
         {
           data &&
-            <Table table={{
+            <Table key={key} table={{
               body: data,
               headers: Object.keys(CELL_MAP),
               extras: [],

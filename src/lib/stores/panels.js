@@ -9,7 +9,7 @@ REDUCER = (state, action) => {
   case "MOUNT_COMPONENT":
     return {...state, component: action.component};
   case "SET_DATA":
-    return {...state, data: action.data};
+    return {...state, key: state.key + 1, data: action.data};
   default:
     return state;
   }

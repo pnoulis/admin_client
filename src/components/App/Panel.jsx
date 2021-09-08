@@ -8,7 +8,7 @@ import styled from "styled-components";
 
 const
 Panel = () => {
-  const {panel, setPanel} = PANEL_STORE.usePanel({});
+  const {panel, setPanel} = PANEL_STORE.usePanel({key: 0});
 
   return (
     <PANEL_STORE.panelContext.Provider value={{...panel, setPanel}}>
