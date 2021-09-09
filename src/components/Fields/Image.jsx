@@ -92,7 +92,7 @@ function ViewImage({fields, edit, setForm, img}) {
         maxWidth={300}
         maxHeight={300}
         defaultSize={{width: 90, height: 80}}>
-        <img style={imgStyle} src={img.large.path}/>
+        <img style={imgStyle} src={img}/>
       </Resizable>
     </div>
   );

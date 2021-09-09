@@ -52,7 +52,7 @@ PRODUCT_SCHEMA = {
     title: "",
     mu: "",
     pu: "",
-    img: {},
+    img: "",
     tags: [],
     description: "",
     supplier: "",

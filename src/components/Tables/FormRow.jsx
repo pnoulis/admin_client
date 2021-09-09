@@ -36,6 +36,8 @@ export default function FormRow({notify, data, edit}) {
   ),
   {setReq, status, res} = useBackend();
 
+  console.log(form);
+
   useEffect(() => {
     if (status || !form.toggled) return null;
 
@@ -49,7 +51,7 @@ export default function FormRow({notify, data, edit}) {
     case "delete":
       if (form.new) return null;
 
-      setTimeout(() => setReq({method: "delete", url: target, payload: {id: form.fields._id, oldImg: form.fields.img.tiny.path}}), 500);
+      setTimeout(() => setReq({method: "delete", url: target, payload: {id: form.fields._id, oldImg: form.fields.img}}), 500);
       break;
     case "done":
       const {ready, fieldErrors} = isFormReady(form.fields);
