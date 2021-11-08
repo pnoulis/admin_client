@@ -15,7 +15,7 @@ isImage = (object) => {
   if (!("type" in object)) return false;
   if (FILE_FORMATS.some(format => format === object.type)) return true;
 },
-BACKEND_HOST = "http://localhost:4006/api",
+BACKEND_HOST = `http://${process.env.REACT_APP_DOMAIN || "localhost"}:${process.env.REACT_APP_BACKEND_PORT || 8080}/api`,
 REQ_TIMEOUT = 10000; // 10 seconds
 
 function checkStatus(response) {

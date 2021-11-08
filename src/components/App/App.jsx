@@ -10,6 +10,7 @@ App = () => {
   {app, setApp} = APP_STORE.useApp(),
   resize = useResizeEvent();
 
+  console.log(process.env);
   return (
     <APP_STORE.appContext.Provider value={{...app, setApp}}>
       <Panel key={resize}/>
