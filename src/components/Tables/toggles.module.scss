@@ -1,0 +1,60 @@
+.notBeingEdited {
+    display: flex;
+    flex-flow: column nowrap;
+    min-width: 100px;
+}
+
+.beingEdited {
+    display: flex;
+    flex-flow: column nowrap;
+    min-width: 100px;
+}
+.delete {
+    padding: 5px 10px;
+    box-sizing: content-box;
+    margin-top: 10px;
+    &:hover img{
+        cursor: pointer;
+    }
+    img {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+    }
+}
+.cancel {
+    text-transform: capitalize;
+    font-size: var(--font-size-2large);
+    padding: 5px 10px;
+    font-weight: bold;
+    margin-top: 10px;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.done {
+    text-transform: capitalize;
+    font-size: var(--font-size-2large);
+    padding: 5px 10px;
+    font-weight: bold;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.edit {
+    padding: 5px 10px;
+    box-sizing: content-box;
+
+    &:hover img{
+       cursor: pointer;
+    }
+    img {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+    }
+
+}

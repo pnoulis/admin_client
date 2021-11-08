@@ -1,0 +1,132 @@
+.textField {
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    position: relative;
+
+    .label {
+        text-transform: capitalize;
+        font-weight: bold;
+        color: var(--color-blue-darkNavy-b90-1);
+        flex: 1 1 50%;
+    }
+
+    .inputPassword {
+        flex: 1 1 50%;
+        display: inline-block;
+        outline: none;
+        box-shadow: none;
+        background-color: inherit;
+        border: 3px solid transparent;
+        min-height: 45px;
+        min-width: 100px;
+        text-align: right;
+        font-size: 1rem;
+        padding: 5px 0;
+        border-radius: 10px;
+        @media (min-width: 1400px) {
+            min-width: 240px;
+            font-size: 1.2rem;
+        }
+    }
+
+    .input {
+        flex: 1 1 50%;
+        display: inline-block;
+        outline: none;
+        box-shadow: none;
+        background-color: inherit;
+        border: 3px solid transparent;
+        min-height: 45px;
+        min-width: 100px;
+        text-align: right;
+        font-size: 1rem;
+        padding: 5px 0;
+        border-radius: 10px;
+        @media (min-width: 1400px) {
+            min-width: 240px;
+            font-size: 1.2rem;
+        }
+    }
+
+    .password {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        right: 6px;
+        top: 8px;
+        cursor: pointer;
+    }
+
+
+    .errorMessage {
+        display: none;
+        margin: 10px auto 0 auto;
+        color: red;
+        letter-spacing: 1.5px;
+        text-transform: capitalize;
+        max-width: 400px;
+        text-align: center;
+
+        @media (min-width: 800px) {
+            margin: 10px 0 0 auto;
+        }
+
+    }
+
+
+    @media (min-width: 800px) {
+        font-size: 1.1rem;
+    }
+
+    @media (min-width: 1400px) {
+        font-size: 1.2rem;
+        letter-spacing: 1.5px;
+    }
+}
+
+
+.errorMessage.error {
+    display: inline-block;
+}
+
+.input.edit {
+    padding: 5px 8px;
+    border: 3px solid black;
+    text-align: center;
+}
+
+.inputPassword.edit {
+    padding: 5px 37px 5px 8px;
+    text-align: center;
+}
+
+.inputPassword.focused {
+    cursor: pointer;
+    border: 3px solid black;
+}
+
+.input.focused {
+    cursor: pointer;
+    border: 3px solid black;
+}
+.input.invalid {
+    border: 3px solid var(--color-error);
+}
+
+.inputPassword.invalid {
+    border: 3px solid var(--color-error);
+}
+
+.input.valid {
+    border: 3px solid var(--color-success);
+}
+
+.inputPassword.valid {
+    border: 3px solid var(--color-success);
+}
+

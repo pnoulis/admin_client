@@ -35,12 +35,15 @@ html, body {
     --color-error: rgba(255, 115, 115, 1);
     --color-success: rgba(0, 250, 154, 1);
 
+    /* old colors */
+    --color-blue-darkNavy-b90-1: rgba(61, 61, 90, 1);
+    --color-blue-dodge-1: rgba(30, 144, 255, 1);
+
     /*
            COLOR-VAVBAR
      */
 
 
-    display: flex;
     min-width: 100vw;
     min-height: 100vh;
     padding: 0;
@@ -63,8 +66,8 @@ a {
 }
 
 #root {
-    flex: 1;
-    display: flex;
+    min-width: 100vw;
+    min-height: 100vh;
 }
 
 .visually-hide-element {

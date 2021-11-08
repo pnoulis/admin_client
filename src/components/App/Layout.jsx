@@ -1,34 +1,20 @@
 import styled from "styled-components";
 
+export
 const
-Layout = styled.article`
-flex: 1;
+Root = styled.article`
+min-width: 100vw;
 min-height: 100vh;
-display: grid;
-grid-template-columns: minmax(auto, 350px) 1fr;
-grid-template-rows: auto 1fr auto;
-
-header {
-grid-column: 1/3;
-grid-row: 1/2;
-
-}
-
-aside {
-grid-column: 1/2;
-grid-row: 2/3;
-
-}
-
-main {
-grid-column: 2/3;
-grid-row: 2/3;
-}
-
-footer {
-grid-column: 1/3;
-grid-row: 3/4;
-}
+flex-flow: column nowrap;
+display: flex;
+`,
+Sidebar = styled.aside`
+display: flex;
+`,
+Main = styled.main`
+flex: 1;
+display: flex;
+flex-flow: row nowrap;
 `;
 
-export default Layout;
+

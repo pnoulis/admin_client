@@ -1,0 +1,29 @@
+.selectionField {
+    display: flex;
+    flex-flow: row wrap;
+    min-width: 200px;
+    padding-top: 10px;
+    justify-content: center;
+}
+.selector {
+    min-width: 30px;
+    padding: 7px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: black;
+    text-align: center;
+    margin: 0 10px 10px 0;
+    color: red;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.hovered {
+    color: var(--color-blue-dodge-1) !important;
+}
+
+.selected {
+    color: var(--color-blue-dodge-1) !important;
+}
+
+

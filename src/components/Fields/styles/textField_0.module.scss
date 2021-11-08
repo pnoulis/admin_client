@@ -1,0 +1,119 @@
+.textField {
+    box-sizing: border-box;
+    border-radius: 6px;
+    position: relative;
+    font-size: 1em;
+    width: 100%;
+
+    .label {
+        text-transform: uppercase;
+        border-radius: 6px;
+        letter-spacing: 1.5px;
+        position: absolute;
+        top: 30px;
+        left: 15px;
+        transform: translate(0, -50%);
+    }
+
+    .requiredStar {
+        display: inline-block;
+        position: relative;
+        bottom: -3px;
+        left: 4px;
+    }
+
+    .input {
+        outline: none;
+        border-radius: 6px;
+        letter-spacing: 1.5px;
+        width: 100%;
+        border: 3px solid black;
+        height: 55px;
+        padding-top: 20px;
+        padding-left: 6px;
+        padding-right: 30px;
+        font-size: 0.9em;
+        text-align: center;
+
+        @media screen and (min-width: 1000px) {
+            font-size: 1em;
+        }
+    }
+
+    .optional {
+        position: absolute;
+        font-weight: bold;
+        top: 30px;
+        right: 6px;
+        transform: translate(0, -50%);
+        text-transform: capitalize;
+        color: rgba(30, 144, 255, 1);
+    }
+
+    .errorMessage {
+        display: inline-block;
+        margin: 6px 6px 10px 0;
+        color: red;
+        letter-spacing: 1.5px;
+        text-transform: capitalize;
+        max-width: 400px;
+    }
+
+    .password {
+        position: absolute;
+        top: 30px;
+        right: 10px;
+        transform: translate(0, -50%);
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+    }
+
+    .confirmMessage {
+        display: inline-block;
+        margin: 6px 6px 10px 0;
+        letter-spacing: 1.5px;
+        text-transform: capitalize;
+        max-width: 400px;
+    }
+}
+
+.confirmMessage:nth-of-type(1).valid {
+    color: rgba(0, 250, 154, 1);
+}
+.confirmMessage:nth-of-type(1).invalid {
+    color: red;
+}
+
+.input:nth-of-type(1).focused {
+    cursor: pointer;
+}
+.input:nth-of-type(1).invalid {
+    border: 3px solid rgba(255, 115, 115, 1);
+    padding-left: 10px;
+}
+.input:nth-of-type(1).valid {
+    border: 3px solid rgba(0, 250, 154, 1);
+    padding-left: 10px;
+}
+.label:nth-of-type(1).focused {
+    top: 20px;
+    opacity: 0.6;
+    cursor: pointer;
+}
+.label:nth-of-type(1).invalid {
+    left: 12px;
+}
+.label:nth-of-type(1).valid {
+    left: 12px;
+}
+.optional:nth-of-type(1).focused {
+    top: 20px;
+}
+.optional:nth-of-type(1).invalid {
+    right: 13px;
+}
+.optional:nth-of-type(1).valid {
+    right: 13px;
+}
