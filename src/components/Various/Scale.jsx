@@ -15,19 +15,19 @@ Scale = ({panel, children}) => {
   [done, setDone] = useState(false);
 
   useEffect(() => {
-    const clientScroll = document.documentElement.scrollWidth,
-          clientWidth = document.documentElement.clientWidth;
+    // const clientScroll = document.documentElement.scrollWidth,
+    //       clientWidth = document.documentElement.clientWidth;
 
-    if (clientScroll === clientWidth) return setDone(true);
+    // if (clientScroll === clientWidth) return setDone(true);
 
-    setScale(scale - 0.2);
+    // setScale(scale - 0.2);
   }, [scale]);
 
   useEffect(() => {
-    const clientScroll = document.documentElement.scrollWidth,
-          clientWidth = document.documentElement.clientWidth;
-    if (clientScroll === clientWidth) return null;
-    setScale(scale - 0.2);
+    // const clientScroll = document.documentElement.scrollWidth,
+    //       clientWidth = document.documentElement.clientWidth;
+    // if (clientScroll === clientWidth) return null;
+    // setScale(scale - 0.2);
   }, [panel.data]);
 
   return (
